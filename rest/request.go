@@ -40,6 +40,7 @@ func (r *Request) DecodeJsonPayload(v interface{}) error {
 	if len(content) == 0 {
 		return ErrJsonPayloadEmpty
 	}
+	
 	err = json.Unmarshal(content, v)
 	if err != nil {
 		return err
