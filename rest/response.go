@@ -29,7 +29,6 @@ type ResponseWriter interface {
 	WriteHeader(int)
 
 	Write(b []byte) (int, error)
-
 }
 
 // Error produces an error response in JSON with the following structure, '{"Error":"My error message"}'
@@ -64,7 +63,7 @@ type responseWriter struct {
 
 func (w *responseWriter) WriteHeader(code int) {
 	if w.Header().Get("Content-Type") == "" {
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	}
 	w.ResponseWriter.WriteHeader(code)
 	w.wroteHeader = true
