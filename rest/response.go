@@ -62,8 +62,8 @@ type responseWriter struct {
 }
 
 func (w *responseWriter) WriteHeader(code int) {
-	if w.Header().Get("Content-Type") == "" {
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	if w.Header().Get("Content-Type") == "" || w.Header().Get("Content-Type") == "application/json" {
+		w.Header().Set("Content-Type", "application/json;charset=UTF-8")
 	}
 	w.ResponseWriter.WriteHeader(code)
 	w.wroteHeader = true
